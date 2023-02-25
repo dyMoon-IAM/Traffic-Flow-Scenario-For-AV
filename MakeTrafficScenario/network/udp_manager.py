@@ -1,7 +1,7 @@
 import numpy as np
-from autonomous_driving.vehicle_state import VehicleState
-from autonomous_driving.perception.object_info import ObjectInfo
-from autonomous_driving.config.config import Config
+from traffic_vehicle_manager.vehicle_state import VehicleState
+from traffic_vehicle_manager.perception.object_info import ObjectInfo
+from traffic_vehicle_manager.config.config import Config
 from .sender import CtrlCmdSender, TrafficLightSender
 from .receiver import EgoInfoReceiver, ObjectInfoReceiver, TrafficLightReceiver
 import os
@@ -59,20 +59,21 @@ class UdpManager:
         while True:
             start_time = time.perf_counter()
             compen_time = 0
-            self.ctrl_cmd_sender.send_data([0.3, 0.0, 1.0])
             if self.vehicle_state:
 
                 control_input, _ = self.autonomous_driving.execute(
                     self.vehicle_state, self.object_info_list, self.traffic_light
                 )
 
-                steering_input = -np.rad2deg(control_input.steering)/self.vehicle_max_steering_data
-                steering_input = 1.
-                self.ctrl_cmd_sender.send_data([control_input.accel, control_input.brake, steering_input])
+                steering_input = np.rad2deg(control_input.steering)/self.vehicle_max_steering_data
+
+                self.ctrl_cmd_sender.send_data([control_input.accel, control_input.brake, -steering_input])
                 
                 end_time = time.perf_counter()
-                self._print_info(control_input)
+                # self._print_info(control_input)
                 compen_time = float((end_time - start_time))
+
+
             if((1/30 - compen_time) > 0):
                 time.sleep(1/30 - compen_time)
 
@@ -88,23 +89,23 @@ class UdpManager:
         print(f'brake: {control_input.brake:.4f}')
         print(f'steering_angle: {-np.rad2deg(control_input.steering):.4f} deg')
 
-        if self.object_info_list:
-            print('--------------------object-------------------------')
-            print(f'object num: {len(self.object_info_list)}')
-            for i, object_info in enumerate(self.object_info_list):
-                print(
-                    f'#{i} type: {object_info.type}, x: {object_info.position.x:.4f}, '
-                    f'y: {object_info.position.y:.4f}, velocity: {object_info.velocity:.4f}'
-                )
-
-        if self.traffic_light:
-            print('--------------------traffic light-------------------------')
-            print(f'traffic index: {self.traffic_light[0]}')
-            print(f'traffic status: {self.traffic_light[1]}')
+        # if self.object_info_list:
+        #     print('--------------------object-------------------------')
+        #     print(f'object num: {len(self.object_info_list)}')
+        #     for i, object_info in enumerate(self.object_info_list):
+        #         print(
+        #             f'#{i} type: {object_info.type}, x: {object_info.position.x:.4f}, '
+        #             f'y: {object_info.position.y:.4f}, velocity: {object_info.velocity:.4f}'
+        #         )
+        #
+        # if self.traffic_light:
+        #     print('--------------------traffic light-------------------------')
+        #     print(f'traffic index: {self.traffic_light[0]}')
+        #     print(f'traffic status: {self.traffic_light[1]}')
 
     def _ego_info_callback(self, data):
         if data:
-            self.vehicle_state = VehicleState(data[12], data[13], np.deg2rad(data[17]), data[18]/3.6)
+            self.vehicle_state = VehicleState(data[12], data[13], np.deg2rad(data[17]), data[18]/3.6, data[21])
             self.vehicle_currenty_steer = data[-1]
         else:
             self.vehicle_state = None

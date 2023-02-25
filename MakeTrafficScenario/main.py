@@ -1,11 +1,11 @@
 from network.udp_manager import UdpManager
-from ScenarioModule.traffic_scenario import TrafficScenario
+from traffic_vehicle_manager.traffic_agent_driving import TrafficAgent
 
 
 def main():
-    traffic_flow_scearnio = TrafficScenario()
-    network_manager = UdpManager(traffic_flow_scearnio)
-    network_manager.execute()
+    autonomous_driving = TrafficAgent()
+    udp_manager = UdpManager(autonomous_driving)
+    udp_manager.execute()
 
 
 if __name__ == '__main__':

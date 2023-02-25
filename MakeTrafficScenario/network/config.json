@@ -2,8 +2,8 @@
 	"network": {
 		"user_ip": "127.0.0.1",
 		"host_ip": "127.0.0.1",
-		"ctrl_cmd_host_port": 9097,
-		"ctrl_cmd_dst_port": 9098,
+		"ctrl_cmd_host_port": 9099,
+		"ctrl_cmd_dst_port": 9100,
 		"get_traffic_host_port": 7602,
 		"get_traffic_dst_port": 7502,
 		"set_traffic_host_port": 7603,
