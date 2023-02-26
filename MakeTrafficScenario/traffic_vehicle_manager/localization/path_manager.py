@@ -92,4 +92,9 @@ class PathManager:
             if self.is_closed_path:
                 local_path += self.path[:self.local_path_size + len(self.path) - current_waypoint]
 
-        return local_path, self.velocity_profile[current_waypoint]
+        return local_path, self.velocity_profile[current_waypoint], current_waypoint
+
+    def is_drive_completion(self, current_waypoint) -> bool:
+        if len(self.path) - current_waypoint < 25:
+            return True
+        return False

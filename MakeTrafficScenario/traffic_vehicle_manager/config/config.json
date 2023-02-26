@@ -9,6 +9,8 @@
         "traffic_light_control": true,
         "is_closed_path": true,
         "local_path_size": 50,
+        "use_random_path": true,
+        "start_link_name": "A219BS010310",
         "use_mgeo_path" : false,
         "mgeo":{
             "start_node" : "ND000298",

@@ -32,8 +32,12 @@ class IntelligentDriverModel:
 
         return self.minSpace + max(0, headWayDistance + relativeVelocityDistance)
 
-    def get_acceleration(self, currVel):
+    def get_acceleration(self, currVel, target_vel):
         # Calculate desired gap and acceleration based on IDM equations
+        if target_vel < 0.5:
+            self.targetVel = -1.0
+        else:
+            self.targetVel = target_vel
         distance = self.calc_distance()
         idmAccelleration = self.maxAcceleration * (
                     1 - (currVel / self.targetVel) ** self.accelExponent - (distance / self.object_distance) ** 2)

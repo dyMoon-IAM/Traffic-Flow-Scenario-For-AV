@@ -23,9 +23,10 @@ class EgoInfoReceiver(Receiver):
             vel_x, vel_y, vel_z = struct.unpack('fff', raw_data[93:105])
             acc_x, acc_y, acc_z = struct.unpack('fff', raw_data[105:117])
             steer = struct.unpack('f', raw_data[117:121])[0]
+            link_name = raw_data[121:132].decode()
             self._parsed_data = [
                 ctrl_mode, gear, signed_vel, map_id, accel, brake, size_x, size_y, size_z, overhang, wheelbase,
-                rear_overhang, pos_x, pos_y, pos_z, roll, pitch, yaw, vel_x, vel_y, vel_z, acc_x, acc_y, acc_z, steer
+                rear_overhang, pos_x, pos_y, pos_z, roll, pitch, yaw, vel_x, vel_y, vel_z, acc_x, acc_y, acc_z, steer, link_name
             ]
         else:
             self._parsed_data = []

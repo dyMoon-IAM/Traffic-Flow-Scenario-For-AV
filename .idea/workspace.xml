@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ed7d7d6-55c7-4ec2-b469-5a4207b92799" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/kinematic/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/kinematic/vehicleKinematic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/planning/idm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/traffic_agent_driving.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/ScenarioModule/traffic_flow_manager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/ScenarioModule/traffic_scenario.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/network/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/network/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/network/sender/ctrl_cmd_sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/network/sender/ctrl_cmd_sender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/network/udp_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/network/udp_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/network/receiver/ego_info_receiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/network/receiver/ego_info_receiver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/config/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/localization/path_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/localization/path_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/mgeo/calc_mgeo_path.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/mgeo/calc_mgeo_path.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/planning/idm.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/planning/idm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/traffic_agent_driving.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/traffic_agent_driving.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/vehicle_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeTrafficScenario/traffic_vehicle_manager/vehicle_state.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +43,12 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/Research/Traffic-Flow-Scenario-For-AV/MakeTrafficScenario/traffic_vehicle_manager/kinematic"
+    "last_opened_file_path": "E:/Research/Traffic-Flow-Scenario-For-AV/MakeTrafficScenario/traffic_vehicle_manager/vehicleVisulazation"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Research\Traffic-Flow-Scenario-For-AV\MakeTrafficScenario\traffic_vehicle_manager\vehicleVisulazation" />
       <recent name="E:\Research\Traffic-Flow-Scenario-For-AV\MakeTrafficScenario\traffic_vehicle_manager\kinematic" />
       <recent name="E:\Research\Traffic-Flow-Scenario-For-AV\MakeTrafficScenario\traffic_vehicle_manager" />
     </key>
@@ -113,7 +110,8 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="control_input" language="Python" />
+        <watch expression="self.path" language="Python" />
+        <watch expression="self.vehicle_state" language="Python" />
       </configuration>
     </watches-manager>
   </component>
